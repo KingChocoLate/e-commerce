@@ -2,7 +2,7 @@
   <FirstMessage/>
 </template>
 
-<script>
+<script lang="ts">
 import FirstMessage from './components/FirstMessage.vue'
 
 export default {
