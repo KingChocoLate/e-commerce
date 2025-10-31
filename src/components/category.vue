@@ -1,13 +1,12 @@
 <template>
-    <div class="box" :style="{ backgroundColor : bgColor}">
+    <div class="card" :style="{ backgroundColor : bgColor}">
         <img id="category-image" :src="image" alt="">
         <p id="category-name">{{ categoryName }}</p>
         <p id="category-num">{{ num }} items</p>
-
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'Category',
     props: {
@@ -32,10 +31,11 @@ export default {
 }
 </script>
 
-<style>
-    .box {
-        width: 136px;
-        height: 185px;
+<style scoped>
+    .card {
+        width: 100%;
+        max-width: 137px;
+        height: 177px;
         display: flex;
         flex-direction: column;
         justify-content: center;
