@@ -2,7 +2,7 @@
     <div class="card" :style="{ backgroundColor: bgColor, backgroundImage: 'url(' + bgImage + ')' }">
         <div class="content">
            <p>{{ title }}</p>
-           <ModButton :buttonbgColor="ButtonbgColor"/>
+           <ModButton :buttonbgColor="ButtonbgColor" @click="shopNow(title)" />
         </div>
     </div>
 </template>
@@ -32,6 +32,12 @@
                 default: '#ffffff'
             }
 
+        },
+
+        methods: {
+            shopNow(title: string) {
+                alert("Let's shop: " + title);
+            }
         }
     }
 </script>
