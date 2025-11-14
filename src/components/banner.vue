@@ -1,5 +1,5 @@
 <template>
-    <div class="card" :style="{ backgroundColor: bgColor, backgroundImage: 'url(' + bgImage + ')' }">
+    <div class="card" :style="{ backgroundColor: bgColor, backgroundImage: `url(${bgImage})` }">
         <div class="content">
            <p>{{ title }}</p>
            <ModButton :buttonbgColor="ButtonbgColor" @click="shopNow(title)" />
