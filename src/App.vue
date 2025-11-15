@@ -16,66 +16,32 @@
 import FirstMessage from './components/firstMessage.vue'
 import Category from './components/category.vue'
 import Banner from './components/banner.vue'
-import axios from 'axios';
+import { useProductStore } from './stores/productStore.ts';
+
 
 export default {
   name: 'App',
+
+  setup() {
+  const productStore = useProductStore();
+
+  productStore.fetchBanners();
+  productStore.fetchCategories();
+  productStore.fetchgroups();
+  productStore.fetchproducts();
+
+  return { productStore,
+            categories: productStore.categories,
+            banners: productStore.promotions,
+            products: productStore.products,
+            groups: productStore.groups
+   };
+  },
   components: {
     FirstMessage,
     Category,
     Banner
   },
-
-  data() {
-    return {
-      categories: [] as {
-      categoryName: string;
-      num: number;
-      bgColor: string;
-      image: string;
-    }[],
-    banners: [] as {
-      title: string;
-      ButtonbgColor: string;
-      bgColor: string;
-      bannerImage: string;
-    }[]
-
-    }
-  },
-
-  methods: {
-    async fetchCategories() {
-      const result = await axios.get("http://localhost:3000/api/categories");
-      this.categories = result.data
-                        .map((cat: any) => ({
-                          categoryName: cat.name,
-                          num: cat.productCount,
-                          bgColor: cat.color,
-                          image: `http://localhost:3000/${cat.image.replace(/\\/g, '/')}`
-                        }));
-      console.log(result.data);
-      console.log(this.categories);
-    },
-
-    async fetchBanners() {
-      const result = await axios.get("http://localhost:3000/api/promotions");
-      this.banners = result.data
-                        .map((promo: any) => ({
-                          title: promo.title,
-                          ButtonbgColor: promo.buttonColor,
-                          bgColor: promo.color,
-                          bannerImage: `http://localhost:3000/${promo.image.replace(/\\/g, '/')}`
-                        }));
-      console.log(result.data);
-      console.log(this.banners);
-    }
-  },
-
-  mounted() {
-    this.fetchCategories();
-    this.fetchBanners();
-  }
 }
 </script>
 
