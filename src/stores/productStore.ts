@@ -6,25 +6,59 @@ export interface Promotions {
     bgColor: string,
     bannerImage: string,
     ButtonbgColor: string
-
+    
 }
 
 export interface Categories {
     categoryName: string,
     image: string,
     num: number,
-    bgColor: string
+    bgColor: string,
+    group: string
+}
+
+export interface Groups {
+    groupName: string
+}
+
+export interface Products {
+    name: string;
+    rating: number;
+    size: string;
+    image: string;
+    price: number;
+    promotionAsPercentage: number;
+    categoryId: number;
+    instock: number;
+    countSold: number;
+    group: string;
 }
 
 export const useProductStore = defineStore('product', {
     state: () => ({
-        groups: [],
+        groups: [] as Groups[],
         promotions: [] as Promotions[],
         categories: [] as Categories[],
-        products: []
+        products: [] as Products[]
     }),
 
-    getters: {},
+    getters: {
+        getCategoriesByGroup(state) {
+            return (groupName: string) => state.categories.find((category) => category.group === groupName)
+        },
+        getProductsByGroup(state) {
+            return (groupName: string) => state.products.find((product) => product.group === groupName)
+        },
+
+        getProductsByCategory(state) {
+            return (categoryId: number) => state.products.find((product) => product.categoryId === categoryId)
+        },
+
+        getPopularProducts(state) {
+            return () => state.products.find((product) => product.countSold > 10)
+        }
+
+    },
     actions: {
         async fetchCategories() {
         const result = await axios.get("http://localhost:3000/api/categories");
@@ -59,7 +93,11 @@ export const useProductStore = defineStore('product', {
 
         async fetchproducts() {
             const result = await axios.get("http://localhost:3000/api/products");
-            this.products = result.data;
+            this.products = result.data.map((prod: any) => ({
+                ...prod,
+                image: `http://localhost:3000/${JSON.parse(prod.image)[0].replace(/\\/g, '/')}`
+            }));
+            console.log(this.products[0]);
         }
     }
 

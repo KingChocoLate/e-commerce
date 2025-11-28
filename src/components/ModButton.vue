@@ -32,6 +32,7 @@
         font-size: 12px;
         font-weight: bold;
         color: white; 
-        font-family: 'quicksand', sans-serif;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
     }
 </style>

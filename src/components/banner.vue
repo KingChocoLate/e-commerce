@@ -63,9 +63,12 @@
         width: 60%;
         height: 100%;
         font-family: 'Quicksand', sans-serif;
-        font-weight: 600;
         font-size: 24px;
         line-height: 32px;
         color: #253D4E;
+    }
+
+    .content p {
+        font-weight: 700;
     }
 </style>

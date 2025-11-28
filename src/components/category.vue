@@ -1,5 +1,5 @@
 <template>
-    <div class="card" :style="{ backgroundColor : bgColor}">
+    <div :class="{'hasBorder': bordered}" class="card" :style="{ backgroundColor : bgColor}">
         <img id="category-image" :src="image" alt="">
         <p id="category-name">{{ categoryName }}</p>
         <p id="category-num">{{ num }} items</p>
@@ -26,6 +26,10 @@ export default {
         image: {
             type: String,
             default: ''
+        },
+        bordered: {
+            type: Boolean,
+            default: false
         }
     }
 }
@@ -42,12 +46,18 @@ export default {
         align-items: center;
         border-radius: 10px;
     }
+
+    .hasBorder {
+        border: 1px solid #81B13D;
+        box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.07);
+    }
     #category-image {
         width: 120px;
         height: 120px;
     }
     #category-name {
         font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
         font-size: 16px;
         color: rgba(37, 61, 78, 1);
     }
