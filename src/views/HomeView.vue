@@ -1,8 +1,9 @@
 <template>
   <div class="full_display">
+    <ShowCase/>
     <MenuBar menuName="Feature Products"/>
     <div class="category-display">
-      <Category v-for="(category, index) in categories" :key="index" :image="category.image" :categoryName="category.categoryName" :num="category.num" :bgColor="category.bgColor" :bordered= "index === 0"/>
+      <Category v-for="(category, index) in categories" :key="index" :image="category.image" :categoryName="category.categoryName" :num="category.num" :bgColor="category.bgColor" :index="index"/>
     </div>
 
     <div class="banner_display">
@@ -11,9 +12,8 @@
 
     <MenuBar menuName="Popular Products"/>
     <div class="product_display">
-      <Product v-for="(product, index) in products" :key="index" :name="product.name" :rating="product.rating" :size="product.size" :price="product.price" :promotionAsPercentage="product.promotionAsPercentage" :image="product.image" :clicked="index === 0" :index="index"/>
+      <Product v-for="(product, index) in products" :key="index" :name="product.name" :rating="product.rating" :size="product.size" :price="product.price" :promotionAsPercentage="product.promotionAsPercentage" :image="product.image" :index="index" />
     </div>
-    
   </div>
 </template>
 
@@ -26,9 +26,10 @@ import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import MenuBar from '@/components/menu.vue';
 import Product from '@/components/product.vue';
+import ShowCase from '../components/showCase.vue';
 
 export default {
-  name: 'App',
+  name: 'Home',
   data() {
     return {
       currentGroupName: 'Milk & Diaries'
@@ -54,7 +55,8 @@ export default {
     Category,
     Banner,
     MenuBar,
-    Product
+    Product,
+   ShowCase
   },
 }
 </script>
@@ -85,9 +87,8 @@ export default {
 
   .product_display {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(298px, 1fr));
     gap: 24px;
   }
 

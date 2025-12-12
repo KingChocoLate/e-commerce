@@ -1,4 +1,35 @@
 /* color palette from <https://github.com/vuejs/theme> */
+ @font-face {
+    font-family: 'Quicksand';
+    src: url(../assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf) format('truetype');
+    font-weight: 300 400 600 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url(../assets/fonts/Lato/Lato-Regular.ttf) format('truetype');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url(../assets/fonts/Lato/Lato-Light.ttf) format('truetype');
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url(../assets/fonts/Lato/Lato-Bold.ttf) format('truetype');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+    font-weight: 300 400 600 700;
+  }
+
 :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -38,7 +69,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-white-mute);
+    --color-background: var(--vt-c-white);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
 
@@ -55,7 +86,7 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  font-weight: normal;
+  font-weight: inherit;
 }
 
 body {
@@ -67,6 +98,9 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
+  'Quicksand',
+  'Lato',
+  'Montserrat',
     Inter,
     -apple-system,
     BlinkMacSystemFont,

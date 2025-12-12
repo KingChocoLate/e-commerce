@@ -1,10 +1,12 @@
 <template>
-    <div class="card" :style="{ backgroundColor: bgColor, backgroundImage: `url(${bgImage})` }">
-        <div class="content">
-           <p>{{ title }}</p>
-           <ModButton :buttonbgColor="ButtonbgColor" @click="shopNow(title)" />
+    <RouterLink to="/products/1">
+        <div class="card" :style="{ backgroundColor: bgColor, backgroundImage: `url(${bgImage})` }">
+            <div class="content">
+                <p>{{ title }}</p>
+                <ModButton :buttonbgColor="ButtonbgColor" @click="shopNow(title)" />
+            </div>
         </div>
-    </div>
+    </RouterLink>
 </template>
 
 <script lang="ts">
@@ -47,7 +49,7 @@
         display: flex;
         justify-content: flex-start;
         width: 100%;
-        max-width: 512px;
+        min-width: 512px;
         height: 300px;
         border-radius: 10px;
         background-position: right bottom;

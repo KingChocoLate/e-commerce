@@ -1,12 +1,16 @@
 <template>
-    <div :class="{'hasBorder': bordered}" class="card" :style="{ backgroundColor : bgColor}">
-        <img id="category-image" :src="image" alt="">
-        <p id="category-name">{{ categoryName }}</p>
-        <p id="category-num">{{ num }} items</p>
-    </div>
+    <RouterLink :to="`categories/${index}`" class="category_link">
+        <div class="card" :style="{ backgroundColor : bgColor}">
+            <img id="category-image" :src="image" alt="">
+            <p id="category-name">{{ categoryName }}</p>
+            <p id="category-num">{{ num }} items</p>
+        </div>
+    </RouterLink>
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router';
+
 export default {
     name: 'Category',
     props: {
@@ -27,18 +31,27 @@ export default {
             type: String,
             default: ''
         },
-        bordered: {
-            type: Boolean,
-            default: false
+        index: {
+            type: Number,
+            required: true
         }
     }
 }
 </script>
 
 <style scoped>
+    .category_link {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .category_link:hover {
+        border: 1px solid #81B13D;
+        box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.07);
+    }
     .card {
         width: 100%;
-        max-width: 137px;
+        min-width: 137px;
         height: 177px;
         display: flex;
         flex-direction: column;
@@ -47,10 +60,6 @@ export default {
         border-radius: 10px;
     }
 
-    .hasBorder {
-        border: 1px solid #81B13D;
-        box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.07);
-    }
     #category-image {
         width: 120px;
         height: 120px;
