@@ -64,26 +64,26 @@ export const useProductStore = defineStore('product', {
         const result = await axios.get("http://localhost:3000/api/categories");
         this.categories = result.data
                           .map((cat: any) => ({
+                          id: cat.id,
                           categoryName: cat.name,
                           num: cat.productCount,
                           bgColor: cat.color,
                           image: `http://localhost:3000/${cat.image.replace(/\\/g, '/')}`
                         }));
         console.log(result.data);
-        console.log(this.categories);
         },
 
         async fetchBanners() {
             const result = await axios.get("http://localhost:3000/api/promotions");
             this.promotions = result.data
                         .map((promo: any) => ({
+                          id: promo.id,
                           title: promo.title,
                           ButtonbgColor: promo.buttonColor,
                           bgColor: promo.color,
                           bannerImage: `http://localhost:3000/${promo.image.replace(/\\/g, '/')}`
                         }));
             console.log(result.data);
-            console.log(this.promotions);
         },
 
         async fetchgroups() {
@@ -97,7 +97,6 @@ export const useProductStore = defineStore('product', {
                 ...prod,
                 image: `http://localhost:3000/${JSON.parse(prod.image)[0].replace(/\\/g, '/')}`
             }));
-            console.log(this.products[0]);
         }
     }
 

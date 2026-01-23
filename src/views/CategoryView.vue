@@ -24,7 +24,7 @@ import { onMounted } from 'vue';
         computed: {
             category() {
                 const index = Number(this.$route.params.categoryId);
-                return this.categories.find(c => c.id = index+4);
+                return this.categories.find(c => c.id === index+4);
             }
         }
     }

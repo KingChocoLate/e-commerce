@@ -10,7 +10,7 @@
         </div>
 
         <div class="switchProduct">
-            <button>
+            <button @click="move_backward">
                 <svg :style="{transform: 'scaleX(-1)'}" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.414 4.293L8.121 0L6.707 1.414L10 4.707H0V6.707H10L6.707 10L8.121 11.414L12.414 7.121C12.7889 6.74594 12.9996 6.23733 12.9996 5.707C12.9996 5.17667 12.7889 4.66806 12.414 4.293Z" fill="#7E7E7E"/>
                 </svg>
@@ -23,7 +23,7 @@
                     </RouterLink>
                 </div>
             </div>
-            <button>
+            <button @click="move_forward">
                 <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.414 4.293L8.121 0L6.707 1.414L10 4.707H0V6.707H10L6.707 10L8.121 11.414L12.414 7.121C12.7889 6.74594 12.9996 6.23733 12.9996 5.707C12.9996 5.17667 12.7889 4.66806 12.414 4.293Z" fill="#7E7E7E"/>
                 </svg>
@@ -50,6 +50,15 @@
                 default: () => []
             },
             index: Number
+        },
+
+        methods: {
+            move_backward() {
+                this.$refs.image_choosing.value.style.transform = 'translate(-142.6px, 0px)';
+            },
+            move_forward() {
+                this.$refs.image_choosing.value.style.transform = 'translate(-142.6px, 0px)';
+            }
         }
     }
 </script>

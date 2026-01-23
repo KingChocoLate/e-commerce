@@ -70,7 +70,7 @@ import { onMounted } from 'vue';
         computed: {
             product() {
                 const index = Number(this.$route.params.productId);
-                return this.products.find(p => p.id == index+1)
+                return this.products.find(p => p.id === index+1)
             }
         }
     }
